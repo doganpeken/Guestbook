@@ -1,0 +1,48 @@
+name: CI/CD
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "15.x"
+
+      - name: Install dependencies for frontend
+        run: npm install
+        working-directory: ./frontend
+
+      - name: Build frontend
+        run: npm run build
+        working-directory: ./frontend
+
+      - name: Install dependencies bff
+        run: npm install
+        working-directory: ./bff
+
+      - name: Run the tests
+        run: REST_API=${{ secrets.REST_API }} npm run test
+        working-directory: ./bff
+
+      - name: Login azure
+        uses: azure/docker-login@v1
+        with:
+          login-server: idi2019.azurecr.io
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+
+      - name: Permission build.sh
+        run: chmod +x ./build.sh
+        working-directory: ./
+
+      - name: Build docker image
+        run: ./build.sh build-$GITHUB_RUN_NUMBER idi2019.azurecr.io
+        working-directory: ./
