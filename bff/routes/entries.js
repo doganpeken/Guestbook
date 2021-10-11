@@ -8,8 +8,9 @@ const axios = require("axios");
 const restAPI = process.env.REST_API;
 
 router.get("/", async (req, res) => {
-  const response = await axios.get(`${restAPI}/guestbook/entries`);
-  res.send(response.data);
+  res.send({ message: "test" });
+  // const response = await axios.get(`${restAPI}/guestbook/entries`);
+  // res.send(response.data);
 });
 
 router.post("/", async (req, res) => {
