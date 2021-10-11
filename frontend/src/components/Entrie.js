@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const host = "http://localhost";
+const host = "";
 
 function Entrie({ setView }) {
   const [name, setName] = useState("");
