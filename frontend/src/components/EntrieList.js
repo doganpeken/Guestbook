@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const host = "http://localhost:3000";
+const host = "http://localhost";
 
 function EntrieList({ view, setView }) {
   const [entries, setEntries] = useState([]);
