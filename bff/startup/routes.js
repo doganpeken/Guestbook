@@ -3,8 +3,10 @@
 const express = require("express");
 const entries = require("../routes/entries");
 const path = require("path");
+const cors = require("cors");
 
 module.exports = function (app) {
+  app.use(cors());
   app.use(express.json());
   app.use(express.static("../frontend/build"));
   app.use(express.json());
