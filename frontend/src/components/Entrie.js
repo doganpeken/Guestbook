@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const host = "http://localhost:3000";
+const host = "http://guestbook-deployment";
 
 function Entrie({ setView }) {
   const [name, setName] = useState("");
