@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const host = "http://guestbook-deployment";
+const host = "http://nginx-guestbookapi";
 
 function EntrieList({ view, setView }) {
   const [entries, setEntries] = useState([]);
