@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const host = process.env.REACT_APP_ENDPOINT;
+const host = "nginx-guestbook:3000";
 
 function EntrieList({ view, setView }) {
   const [entries, setEntries] = useState([]);

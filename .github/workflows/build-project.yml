@@ -28,9 +28,9 @@ jobs:
         run: npm install
         working-directory: ./bff
 
-      - name: Run the tests
-        run: REST_API=${{ secrets.REST_API }} npm run test
-        working-directory: ./bff
+      # - name: Run the tests
+      #   run: REST_API=${{ secrets.REST_API }} npm run test
+      #   working-directory: ./bff
 
       - name: Login azure
         uses: azure/docker-login@v1
