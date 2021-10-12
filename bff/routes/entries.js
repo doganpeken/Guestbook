@@ -5,11 +5,12 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 
-const restAPI = "nginx-guestbookapi"; // process.env.REST_API;
-
 router.get("/", async (req, res) => {
   // res.send({ message: `${restAPI}` });
-  const response = await axios.get(`http://${restAPI}/guestbook/entries`);
+  const response = await axios.get(
+    "http://nginx-guestbookapi/guestbook/entries"
+  );
+  console.log(response);
   res.send(response.data);
 });
 
@@ -22,7 +23,7 @@ router.post("/", async (req, res) => {
   let now = new Date();
   entrie.created = now.toISOString();
   const response = await axios.post(
-    `http://${restAPI}/guestbook/entries`,
+    "http://nginx-guestbookapi/guestbook/entries",
     entrie
   );
   res.status(response.status).send({ message: "OK" });
