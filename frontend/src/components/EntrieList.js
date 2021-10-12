@@ -34,26 +34,27 @@ function EntrieList({ view, setView }) {
         </Col>
       </Row>
       <Row>
-        {entries.map((entrie) => {
-          return (
-            <Col
-              key={entrie.id}
-              className="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 pb-4"
-            >
-              <Card style={{ width: "18rem" }} className="mb-2">
-                <Card.Body>
-                  <Card.Title>{entrie.visitor}</Card.Title>
-                  <Card.Text>
-                    <p>ID: {entrie.id}</p>
-                    <p>Title: {entrie.title}</p>
-                    <p>Text: {entrie.text}</p>
-                    <p>Created: {entrie.created}</p>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
+        {entries.length > 0 &&
+          entries.map((entrie) => {
+            return (
+              <Col
+                key={entrie.id}
+                className="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 pb-4"
+              >
+                <Card style={{ width: "18rem" }} className="mb-2">
+                  <Card.Body>
+                    <Card.Title>{entrie.visitor}</Card.Title>
+                    <Card.Text>
+                      <p>ID: {entrie.id}</p>
+                      <p>Title: {entrie.title}</p>
+                      <p>Text: {entrie.text}</p>
+                      <p>Created: {entrie.created}</p>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
       </Row>
     </>
   );
