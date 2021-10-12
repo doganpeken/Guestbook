@@ -15,7 +15,9 @@ function EntrieList({ view, setView }) {
     fetch(`${host}/guestbook/entries`)
       .then((response) => response.json())
       .then((response) => {
-        const data = response.entries || [];
+        const data = response.entries || [
+          { id: "id", title: "title", text: "text", visitor: "guest" },
+        ];
         setEntries(data);
       });
   }, []);
