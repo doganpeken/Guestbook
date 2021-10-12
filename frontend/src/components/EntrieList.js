@@ -7,7 +7,9 @@ import Col from "react-bootstrap/Col";
 const host = "";
 
 function EntrieList({ view, setView }) {
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState([
+    { id: "test", title: "test", text: "test", visitor: "test" },
+  ]);
 
   useEffect(() => {
     fetch(`${host}/guestbook/entries`)
