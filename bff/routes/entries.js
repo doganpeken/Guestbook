@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
   let now = new Date();
   entrie.created = now.toISOString();
   const response = await axios.post(
-    "http://10.0.63.85 /guestbook/entries",
+    "http://10.0.63.85/guestbook/entries",
     entrie
   );
   res.status(response.status).send({ message: "OK" });
