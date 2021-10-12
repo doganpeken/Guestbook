@@ -14,7 +14,10 @@ function EntrieList({ view, setView }) {
   useEffect(() => {
     fetch(`${host}/guestbook/entries`)
       .then((response) => response.json())
-      .then((response) => setEntries(response.entries));
+      .then((response) => {
+        const data = response.entries || [];
+        setEntries(data);
+      });
   }, []);
 
   return (
