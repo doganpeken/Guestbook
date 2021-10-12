@@ -8,8 +8,10 @@ const axios = require("axios");
 router.get("/", async (req, res) => {
   // res.send({ message: `${restAPI}` });
   const response = await axios.get("http://10.0.136.151/guestbook/entries");
-  console.log(response);
-  res.send(response.data);
+  if (typeof response.data !== "undefined" && response.data.length > 0) {
+    res.send(response.data);
+  }
+  res.send([{}]);
 });
 
 router.post("/", async (req, res) => {
