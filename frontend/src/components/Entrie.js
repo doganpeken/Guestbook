@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const host = "";
-
 function Entrie({ setView }) {
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
@@ -12,7 +10,7 @@ function Entrie({ setView }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    fetch(`${host}/guestbook/entries`, {
+    fetch(`/guestbook/entries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
