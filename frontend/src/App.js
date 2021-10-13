@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <StyledContainer>
-      {view === "entrielist" && <EntrieList view={view} setView={setView} />}
+      {view === "entrielist" && <EntrieList setView={setView} />}
       {view === "entrie" && <Entrie view={view} setView={setView} />}
     </StyledContainer>
   );

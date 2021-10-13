@@ -6,9 +6,10 @@ import Col from "react-bootstrap/Col";
 
 const host = "";
 
-function EntrieList({ view, setView }) {
+function EntrieList({ setView }) {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
+  console.log("start", entries);
 
   useEffect(() => {
     fetch(`${host}/guestbook/entries`)
@@ -18,6 +19,7 @@ function EntrieList({ view, setView }) {
         if (entries === undefined) return;
         setEntries(entries);
         setLoading(false);
+        console.log("after fetch", entries);
       });
   }, []);
 
