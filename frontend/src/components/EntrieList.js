@@ -7,9 +7,8 @@ import Col from "react-bootstrap/Col";
 const host = "";
 
 function EntrieList({ view, setView }) {
-  const [entries, setEntries] = useState([
-    { id: "test", title: "test", text: "test", visitor: "test" },
-  ]);
+  const [entries, setEntries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${host}/guestbook/entries`)
@@ -18,8 +17,11 @@ function EntrieList({ view, setView }) {
         const { entries } = response;
         if (entries === undefined) return;
         setEntries(entries);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) return <h1>LOADING...</h1>;
 
   return (
     <>
@@ -40,7 +42,7 @@ function EntrieList({ view, setView }) {
         </Col>
       </Row>
       <Row>
-        {entries.length > 0 &&
+        {entries &&
           entries.map((entrie) => {
             return (
               <Col
