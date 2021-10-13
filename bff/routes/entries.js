@@ -7,7 +7,23 @@ const axios = require("axios");
 
 router.get("/", async (req, res) => {
   // res.send({ message: `${restAPI}` });
-  const response = await axios.get("http://10.0.117.173/guestbook/entries");
+  const response = await axios.get(
+    "http://nginx-guestbookapi/guestbook/entries"
+  );
+  res.send(response.data);
+});
+
+router.get("/test", async (req, res) => {
+  // res.send({ message: `${restAPI}` });
+  const response = await axios.get(
+    "http://guestbookapi-service/guestbook/entries"
+  );
+  res.send(response.data);
+});
+
+router.get("/test2", async (req, res) => {
+  // res.send({ message: `${restAPI}` });
+  const response = await axios.get("http://20.79.225.113/guestbook/entries");
   res.send(response.data);
 });
 
