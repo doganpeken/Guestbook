@@ -11,17 +11,28 @@ function EntrieList({ setView }) {
   const [loading, setLoading] = useState(true);
   console.log("start", entries);
 
-  useEffect(() => {
-    fetch(`${host}/guestbook/entries`)
-      .then((response) => response.json())
+  const getData = () => {
+    fetch("/guestbook/entries", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+        return response.json();
+      })
       .then((data) => {
-        const { entries } = data;
-        if (entries === undefined) return;
-        setEntries(entries);
+        if (data === undefined) return;
+        setEntries(data);
         setLoading(false);
-        console.log("after fetch", entries);
+        console.log("after fetch", data);
       })
       .catch((err) => console.log("my error:", err));
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   if (loading) return <h1>LOADING...</h1>;
