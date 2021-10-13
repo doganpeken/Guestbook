@@ -14,13 +14,14 @@ function EntrieList({ setView }) {
   useEffect(() => {
     fetch(`${host}/guestbook/entries`)
       .then((response) => response.json())
-      .then((response) => {
-        const { entries } = response;
+      .then((data) => {
+        const { entries } = data;
         if (entries === undefined) return;
         setEntries(entries);
         setLoading(false);
         console.log("after fetch", entries);
-      });
+      })
+      .catch((err) => console.log("my error:", err));
   }, []);
 
   if (loading) return <h1>LOADING...</h1>;
